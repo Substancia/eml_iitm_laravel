@@ -22,6 +22,15 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?php echo e(url('/create')); ?>">Create</a>
 	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<?php echo e(url('/about')); ?>">About</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<?php echo e(url('/suggestion')); ?>">Suggestion</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<?php echo e(url('/contact')); ?>">Contact</a>
+	      </li>
 	    </ul>
 <!-- 	    <form class="form-inline my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" type="text" placeholder="Search">

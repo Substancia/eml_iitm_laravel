@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\File;
+use App\Envelop;
 
 class CreateController extends Controller
 {
@@ -19,6 +20,7 @@ class CreateController extends Controller
 		]);
 
 		$articles = new Article;
+		$articles->number = Article::get()->count() + 1;
 		$articles->title = $request->input('title');
 		$articles->description = $request->input('description');
 		if($request->hasFile('file')) {
@@ -84,5 +86,38 @@ class CreateController extends Controller
 		Article::where('id', $id)
 		->delete();
 		return redirect('/')->with('info', 'Article Deleted Successfully!');
+	}
+	public function contact(Request $request) {
+		$this->validate($request, [
+			'name' => 'required',
+			'email' => 'required',
+			'subject' => 'required',
+			'message' => 'required'
+		]);
+
+		$envelop = new Envelop;
+		$envelop->number = Envelop::get()->count() + 1;
+		$envelop->name = $request->input('name');
+		$envelop->email = $request->input('email');
+		$envelop->subject = $request->input('subject');
+		$envelop->message = $request->input('message');
+
+		$envelop->save();
+		return redirect('/')->with('info', 'Message Sent Successfully!');
+	}
+	public function contactview() {
+		$envelops = Envelop::all();
+		return view('contactview', ['envelops' => $envelops]);
+	}
+	public function contactread($id) {
+		$envelop = Envelop::find($id);
+		return view('contactread', [
+			'envelop' => $envelop
+		]);
+	}
+	public function contactdelete($id) {
+		Envelop::where('id', $id)
+		->delete();
+		return redirect('/contactview')->with('info', 'Message Deleted Successfully!');
 	}
 }

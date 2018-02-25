@@ -21,7 +21,7 @@
 			  	@if(count($articles) > 0)
 			  		@foreach($articles->all() as $article)
 					    <tr>
-					      <th>{{ $article->id }}</th>
+					      <th>{{ $article->number }}</th>
 					      <td>{{ $article->title }}</td>
 					      <td>{{ $article->description }}</td>
 					      <td>

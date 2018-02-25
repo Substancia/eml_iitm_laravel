@@ -22,7 +22,7 @@
 			  	<?php if(count($articles) > 0): ?>
 			  		<?php $__currentLoopData = $articles->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					    <tr>
-					      <th><?php echo e($article->id); ?></th>
+					      <th><?php echo e($article->number); ?></th>
 					      <td><?php echo e($article->title); ?></td>
 					      <td><?php echo e($article->description); ?></td>
 					      <td>
